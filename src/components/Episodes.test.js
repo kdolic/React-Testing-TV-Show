@@ -1,7 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event';
-import {fetchShow as mockFetchShow} from '../api/fetchShow'
+import { render, screen } from '@testing-library/react'
 import Episodes from './Episodes';
 
 const episodes = [
@@ -28,10 +26,16 @@ const episodes = [
         }
     },
 ]
-
+   //Arrange: render app
 test('renders without errors', ()=> {
     render(<Episodes episodes={[]} />);
 })
+
+//Act/Assert: 
+// render component with an empty array prop in episodes
+// we should have a length of 0 for that episode prop
+// rerender with the episode data being passed into the prop
+// find by testID named 'episode' and it should have one object passed in
 
 test('renders changes in episodes list correctly', ()=> {
     const { rerender } = render(<Episodes episodes={[]} />);
